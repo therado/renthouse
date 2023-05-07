@@ -20,9 +20,6 @@ class Apartament
     #[ORM\Column(length: 255)]
     private ?string $address = null;
 
-    #[ORM\Column(type: Types::ARRAY)]
-    private array $gallery = [];
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
@@ -66,18 +63,6 @@ class Apartament
     public function setAddress(string $address): self
     {
         $this->address = $address;
-
-        return $this;
-    }
-
-    public function getGallery(): array
-    {
-        return $this->gallery;
-    }
-
-    public function setGallery(array $gallery): self
-    {
-        $this->gallery = $gallery;
 
         return $this;
     }
