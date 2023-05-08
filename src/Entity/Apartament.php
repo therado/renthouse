@@ -38,6 +38,21 @@ class Apartament
     #[ORM\ManyToOne(inversedBy: 'apartament')]
     private ?Reservation $reservation = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $imageFilename1 = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imageFilename2 = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imageFilename3 = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imageFilename4 = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imageFilename5 = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -135,6 +150,66 @@ class Apartament
     public function setReservation(?Reservation $reservation): self
     {
         $this->reservation = $reservation;
+
+        return $this;
+    }
+
+    public function getImageFilename1(): ?string
+    {
+        return $this->imageFilename1;
+    }
+
+    public function setImageFilename1(string $imageFilename1): self
+    {
+        $this->imageFilename1 = $imageFilename1;
+
+        return $this;
+    }
+
+    public function getImageFilename2(): ?string
+    {
+        return $this->imageFilename2;
+    }
+
+    public function setImageFilename2(string $imageFilename2): self
+    {
+        $this->imageFilename2 = $imageFilename2;
+
+        return $this;
+    }
+
+    public function getImageFilename3(): ?string
+    {
+        return $this->imageFilename3;
+    }
+
+    public function setImageFilename3(string $imageFilename3): self
+    {
+        $this->imageFilename3 = $imageFilename3;
+
+        return $this;
+    }
+
+    public function getImageFilename4(): ?string
+    {
+        return $this->imageFilename4;
+    }
+
+    public function setImageFilename4(string $imageFilename4): self
+    {
+        $this->imageFilename4 = $imageFilename4;
+
+        return $this;
+    }
+
+    public function getImageFilename5(): ?string
+    {
+        return $this->imageFilename5;
+    }
+
+    public function setImageFilename5(string $imageFilename5): self
+    {
+        $this->imageFilename5 = $imageFilename5;
 
         return $this;
     }

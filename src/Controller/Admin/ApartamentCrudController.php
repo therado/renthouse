@@ -7,6 +7,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ApartamentCrudController extends AbstractCrudController
 {
@@ -23,6 +25,11 @@ class ApartamentCrudController extends AbstractCrudController
             Field::new('name'),
             Field::new('address'),
             Field::new('description'),
+            Field::new('imageFilename1'),
+            Field::new('imageFilename2'),
+            Field::new('imageFilename3'),
+            Field::new('imageFilename4'),
+            Field::new('imageFilename5'),
             Field::new('price'),
             Field::new('availability'),
             Field::new('bookableFrom'),

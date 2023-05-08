@@ -38,7 +38,17 @@ class ApartamentRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function findLastFive(): array
+    {
+        return $this->findAllQuery()->getQuery()->getResult;
+    }
 
+    public function findAllApartments(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->getQuery()
+            ->getResult();
+    }
 //    /**
 //     * @return Apartament[] Returns an array of Apartament objects
 //     */
