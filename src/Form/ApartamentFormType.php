@@ -24,7 +24,7 @@ class ApartamentFormType extends AbstractType
             ->add('imageFilename3')
             ->add('imageFilename4')
             ->add('imageFilename5')
-            ->add('reservation')
+            //->add('reservation')
         ;
     }
 

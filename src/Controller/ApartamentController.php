@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Apartament;
+use App\Form\ApartamentFormType;
+use App\Repository\ApartamentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -38,5 +41,41 @@ class ApartamentController extends AbstractController
         return $this->render('apartament/index.html.twig', [
             'apartament' => $apartament,
         ]);
+    }
+
+    #[Route('/create/apartament', name: 'app_create_apartament')]
+    public function add(
+        Request $request,
+        ApartamentRepository $apartaments
+    ): Response {
+        $form = $this->createForm(ApartamentFormType::class, new Apartament());
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $apartament = $form->getData();
+            //$apartament->setAuthor($this->getUser());
+            $apartaments->save($apartament, true);
+
+            // Add a flash
+            $this->addFlash(
+                'success',
+                'Your micro post have been addded.'
+            );
+
+            return $this->redirectToRoute('app_welcome');
+            // Redirect
+        }
+
+        return $this->renderForm(
+            'apartament/create.html.twig',
+            [
+                'form' => $form
+            ]
+        );
+    }
+    #[Route('/test', name: 'test')]
+    public function test(): Response
+    {
+        return $this->render('apartament/test.html.twig');
     }
 }

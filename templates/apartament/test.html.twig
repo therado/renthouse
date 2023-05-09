@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<form method="POST">
+  <div class="mb-4">
+    <label for="name" class="block text-gray-700 font-bold mb-2">Name:</label>
+    <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  </div>
+  <div class="mb-4">
+    <label for="address" class="block text-gray-700 font-bold mb-2">Address:</label>
+    <input type="text" id="address" name="address" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  </div>
+  <div class="mb-4">
+    <label for="description" class="block text-gray-700 font-bold mb-2">Description:</label>
+    <textarea id="description" name="description" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+  </div>
+  <div class="mb-4">
+    <label for="price" class="block text-gray-700 font-bold mb-2">Price:</label>
+    <input type="number" id="price" name="price" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  </div>
+  <div class="mb-4">
+    <label for="reservation_id" class="block text-gray-700 font-bold mb-2">Reservation ID:</label>
+    <input type="number" id="reservation_id" name="reservation_id" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  </div>
+  <div class="mb-4">
+    <label for="availability" class="block text-gray-700 font-bold mb-2">Availability:</label>
+    <select id="availability" name="availability" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+      <option value="1">Available</option>
+      <option value="0">Unavailable</option>
+    </select>
+  </div>
+  <div class="mb-4">
+    <label for="bookable_from" class="block text-gray-700 font-bold mb-2">Bookable From:</label>
+    <input type="datetime-local" id="bookable_from" name="bookable_from" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  </div>
+  <div class="mb-4">
+    <label for="bookable_to" class="block text-gray-700 font-bold mb-2">Bookable To:</label>
+    <input type="datetime-local" id="bookable_to" name="bookable_to" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  </div>
+  <div class="mb-4">
+    <label for="image_filename1" class="block text-gray-700 font-bold mb-2">Image Filename 1:</label>
+    <input type="text" id="image_filename1" name="image_filename1" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  </div>
+  <div class="mb-4">
+    <label for="image_filename2" class="block text-gray-700 font-bold mb-2">Image Filename 2:</label>
+    <input type="text" id="image_filename2" name="image_filename2" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  </div>
+  <div class="mb-4">
+    <label for="image_filename3" class="block text-gray-700 font-bold mb-2">Image Filename 3:</label>
+    <input type="text" id="image_filename2" name="image_filename2" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  </div>
+  <div class="mb-4">
+    <label for="image_filename4" class="block text-gray-700 font-bold mb-2">Image Filename 4:</label>
+    <input type="text" id="image_filename4" name="image_filename4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  </div>
+  <div class="mb-4">
+    <label for="image_filename5" class="block text-gray-700 font-bold mb-2">Image Filename 5:</label>
+    <input type="text" id="image_filename5" name="image_filename5" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  </div>
+  <div class="mt-8">
+    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+      Save
+    </button>
+  </div>
+</form>
+{% endblock %}
