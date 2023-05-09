@@ -2,10 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Apartament;
-use App\Controller\ApartamentController;
+
 use App\Repository\ApartamentRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,14 +20,10 @@ class WelcomeController extends AbstractController
         return $this->redirectToRoute('app_welcome');
     }
 
-
-
-
     #[Route('/welcome', name: 'app_welcome')]
     public function index(
-        AuthorizationCheckerInterface $authChecker,
-        EntityManagerInterface $entityManager,
-        ApartamentController $apartamentController
+        ApartamentRepository $repository,
+        AuthorizationCheckerInterface $authChecker
         ): Response
     {
 
@@ -37,36 +31,12 @@ class WelcomeController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        $apartaments = $apartamentController->showAllApartments($entityManager)->getContent();
-        
-        return $this->render('welcome/index.html.twig', [
-        'controller_name' => 'WelcomeController',
-        'apartaments' => $apartaments,
-        ]);
-    }
-
-    #[Route('/test', name: 'app_check')]
-    public function field(ApartamentRepository $apartaments): Response
-    {
-        return $this->render('welcome/test.html.twig', [
-            'apartaments' => $apartaments->findLastFive()
-        ]);
-    }
-
-    #[Route('/rado', name: 'app_rado')]
-    public function rado(ApartamentRepository $repository): Response
-    {
         $apartments = $repository->findAll();
-        array_splice($apartments, 1);
+        //array_splice($apartments, 1);
 
         return $this->render('welcome/index.html.twig', [
             'apartaments' => $apartments,
         ]);
     }
-
-
-
-
-
 
 }
