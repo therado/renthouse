@@ -59,7 +59,7 @@ class ApartamentController extends AbstractController
             // Add a flash
             $this->addFlash(
                 'success',
-                'Your micro post have been addded.'
+                'Your apartment have been added.'
             );
 
             return $this->redirectToRoute('app_welcome');
