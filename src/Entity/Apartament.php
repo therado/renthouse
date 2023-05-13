@@ -35,9 +35,6 @@ class Apartament
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $bookableTo = null;
 
-    #[ORM\ManyToOne(inversedBy: 'apartament')]
-    private ?Reservation $reservation = null;
-
     #[ORM\Column(length: 255)]
     private ?string $imageFilename1 = null;
 
@@ -138,18 +135,6 @@ class Apartament
     public function setBookableTo(\DateTimeInterface $bookableTo): self
     {
         $this->bookableTo = $bookableTo;
-
-        return $this;
-    }
-
-    public function getReservation(): ?Reservation
-    {
-        return $this->reservation;
-    }
-
-    public function setReservation(?Reservation $reservation): self
-    {
-        $this->reservation = $reservation;
 
         return $this;
     }

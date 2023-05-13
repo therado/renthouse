@@ -5,9 +5,11 @@ namespace App\Controller;
 
 use App\Repository\ApartamentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+
 class WelcomeController extends AbstractController
 {
     #[Route('/', name: 'app_check')]

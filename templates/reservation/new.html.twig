@@ -1,0 +1,15 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Create a New Reservation</h1>
+
+    {{ form_start(reservation_form) }}
+        {{ form_row(reservation_form.start_date) }}
+        {{ form_row(reservation_form.end_date) }}
+        {{ form_row(reservation_form.user) }}
+        {{ form_row(reservation_form.apartment) }}
+        {{ form_row(reservation_form.Submit) }}
+    {{ form_end(reservation_form) }}
+{% endblock %}

@@ -41,8 +41,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 20)]
     private ?string $phoneNumber = null;
 
-    #[ORM\ManyToOne(inversedBy: 'customer')]
-    private ?Reservation $reservations = null;
+    #[ORM\OneToOne(mappedBy: 'author', cascade: ['persist', 'remove'])]
+    private ?Contact $contact = null;
 
     public function getId(): ?int
     {
@@ -162,14 +162,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getReservations(): ?Reservation
+    public function getContact(): ?Contact
     {
-        return $this->reservations;
+        return $this->contact;
     }
 
-    public function setReservations(?Reservation $reservations): self
+    public function setContact(Contact $contact): self
     {
-        $this->reservations = $reservations;
+        // set the owning side of the relation if necessary
+        if ($contact->getAuthor() !== $this) {
+            $contact->setAuthor($this);
+        }
+
+        $this->contact = $contact;
 
         return $this;
     }
