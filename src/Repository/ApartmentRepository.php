@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Apartament;
+use App\Entity\Apartment;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Apartament>
+ * @extends ServiceEntityRepository<Apartment>
  *
- * @method Apartament|null find($id, $lockMode = null, $lockVersion = null)
- * @method Apartament|null findOneBy(array $criteria, array $orderBy = null)
- * @method Apartament[]    findAll()
- * @method Apartament[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Apartment|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Apartment|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Apartment[]    findAll()
+ * @method Apartment[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ApartamentRepository extends ServiceEntityRepository
+class ApartmentRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Apartament::class);
+        parent::__construct($registry, Apartment::class);
     }
 
-    public function save(Apartament $entity, bool $flush = false): void
+    public function save(Apartment $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class ApartamentRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Apartament $entity, bool $flush = false): void
+    public function remove(Apartment $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -38,19 +38,9 @@ class ApartamentRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-    public function findLastFive(): array
-    {
-        return $this->findAllQuery()->getQuery()->getResult;
-    }
 
-    public function findAllApartments(): array
-    {
-        return $this->createQueryBuilder('a')
-            ->getQuery()
-            ->getResult();
-    }
 //    /**
-//     * @return Apartament[] Returns an array of Apartament objects
+//     * @return Apartment[] Returns an array of Apartment objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -64,7 +54,7 @@ class ApartamentRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Apartament
+//    public function findOneBySomeField($value): ?Apartment
 //    {
 //        return $this->createQueryBuilder('a')
 //            ->andWhere('a.exampleField = :val')

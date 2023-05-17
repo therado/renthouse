@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 
-use App\Repository\ApartamentRepository;
+use App\Repository\ApartmentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +24,7 @@ class WelcomeController extends AbstractController
 
     #[Route('/welcome', name: 'app_welcome')]
     public function index(
-        ApartamentRepository $repository,
+        ApartmentRepository $repository,
         AuthorizationCheckerInterface $authChecker
         ): Response
     {

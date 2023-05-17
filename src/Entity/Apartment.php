@@ -2,38 +2,28 @@
 
 namespace App\Entity;
 
-use App\Repository\ApartamentRepository;
-use Doctrine\DBAL\Types\Types;
+use App\Repository\ApartmentRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ApartamentRepository::class)]
-class Apartament
+#[ORM\Entity(repositoryClass: ApartmentRepository::class)]
+class Apartment
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 150)]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
     private ?string $address = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(length: 1024)]
     private ?string $description = null;
 
     #[ORM\Column]
     private ?float $price = null;
-
-    #[ORM\Column]
-    private ?bool $availability = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $bookableFrom = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $bookableTo = null;
 
     #[ORM\Column(length: 255)]
     private ?string $imageFilename1 = null;
@@ -46,9 +36,6 @@ class Apartament
 
     #[ORM\Column(length: 255)]
     private ?string $imageFilename4 = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $imageFilename5 = null;
 
     public function getId(): ?int
     {
@@ -103,42 +90,6 @@ class Apartament
         return $this;
     }
 
-    public function isAvailability(): ?bool
-    {
-        return $this->availability;
-    }
-
-    public function setAvailability(bool $availability): self
-    {
-        $this->availability = $availability;
-
-        return $this;
-    }
-
-    public function getBookableFrom(): ?\DateTimeInterface
-    {
-        return $this->bookableFrom;
-    }
-
-    public function setBookableFrom(\DateTimeInterface $bookableFrom): self
-    {
-        $this->bookableFrom = $bookableFrom;
-
-        return $this;
-    }
-
-    public function getBookableTo(): ?\DateTimeInterface
-    {
-        return $this->bookableTo;
-    }
-
-    public function setBookableTo(\DateTimeInterface $bookableTo): self
-    {
-        $this->bookableTo = $bookableTo;
-
-        return $this;
-    }
-
     public function getImageFilename1(): ?string
     {
         return $this->imageFilename1;
@@ -183,18 +134,6 @@ class Apartament
     public function setImageFilename4(string $imageFilename4): self
     {
         $this->imageFilename4 = $imageFilename4;
-
-        return $this;
-    }
-
-    public function getImageFilename5(): ?string
-    {
-        return $this->imageFilename5;
-    }
-
-    public function setImageFilename5(string $imageFilename5): self
-    {
-        $this->imageFilename5 = $imageFilename5;
 
         return $this;
     }
