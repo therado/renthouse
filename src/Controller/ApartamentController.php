@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Apartament;
-use App\Form\ApartamentFormType;
-use App\Repository\ApartamentRepository;
+
+use App\Entity\Apartment;
+use App\Form\ApartmentFormType;
+use App\Repository\ApartmentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,20 +18,20 @@ class ApartamentController extends AbstractController
     #[Route('/apartments', name: 'app_apartments')]
     public function showAllApartments(EntityManagerInterface $entityManager): Response
     {
-        $apartaments = $entityManager->getRepository(Apartament::class)->findAll();
+        $apartaments = $entityManager->getRepository(Apartment::class)->findAll();
         
         return $this->render('apartament/index.html.twig', [
             'apartaments' => $apartaments,
         ]);
     }
 
-    #[Route('/apartament/{name}', name: 'app_apartament')]
+    #[Route('/apartment/{name}', name: 'app_apartament')]
     public function showApartament(
         string $name,
         EntityManagerInterface $entityManager
     ): Response {
         $apartament = $entityManager
-            ->getRepository(Apartament::class)
+            ->getRepository(Apartment::class)
             ->findOneBy(['name' => $name]);
         
         // Jeśli apartament o podanej nazwie nie istnieje, zwracamy odpowiedź 404
@@ -43,12 +44,12 @@ class ApartamentController extends AbstractController
         ]);
     }
 
-    #[Route('/create/apartament', name: 'app_create_apartament')]
+    #[Route('/create/apartment', name: 'app_create_apartament')]
     public function add(
         Request $request,
-        ApartamentRepository $apartaments
+        ApartmentRepository $apartaments
     ): Response {
-        $form = $this->createForm(ApartamentFormType::class, new Apartament());
+        $form = $this->createForm(ApartmentFormType::class, new Apartment());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
