@@ -25,7 +25,7 @@ class UserCrudController extends AbstractCrudController
             Field::new('firstName'),
             Field::new('lastName'),
             Field::new('phoneNumber'),
-            AssociationField::new('reservations')
+
             
         ];
     }
