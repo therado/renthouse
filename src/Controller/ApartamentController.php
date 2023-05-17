@@ -4,8 +4,11 @@ namespace App\Controller;
 
 
 use App\Entity\Apartment;
+use App\Entity\Reservation;
 use App\Form\ApartmentFormType;
+use App\Form\ReservationFormType;
 use App\Repository\ApartmentRepository;
+use App\Repository\ReservationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,6 +46,39 @@ class ApartamentController extends AbstractController
             'apartament' => $apartament,
         ]);
     }
+
+    #[Route('/apartment/{name}/reservation', name: 'app_apartment_reservation')]
+public function addReservation(
+    Apartment $apartment,
+    Request $request,
+    EntityManagerInterface $entityManager,
+    ReservationRepository $reservations
+): Response {
+    $form = $this->createForm(ReservationFormType::class, new Reservation());
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        $reservation = $form->getData();
+        $reservation->setApartmentReservation($apartment);
+        $reservation->setClientAccount($this->getUser());
+        $entityManager->persist($reservation); // Dodaj rezerwację do menadżera encji
+        $entityManager->flush(); // Zapisz rezerwację w bazie danych
+        // Add a flash message
+        $this->addFlash(
+            'success',
+            'Rezerwacja została dokonana.'
+        );
+        return $this->redirectToRoute('app_welcome');
+    }
+
+    return $this->renderForm(
+        'apartament/create.html.twig',
+        [
+            'form' => $form->createView(),
+            'apartment' => $apartment,
+        ]
+    );
+}
 
     #[Route('/create/apartment', name: 'app_create_apartament')]
     public function add(
